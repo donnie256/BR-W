@@ -529,16 +529,16 @@ cite {
   position: fixed;
   top: 0;
   right: 0;
-  width: min(320px, 85vw);
+  width: min(300px, 80vw);
   height: 100dvh;
   background: var(--brw-surface);
   z-index: 200;
-  padding: 24px;
   display: flex;
   flex-direction: column;
   transform: translateX(100%);
   transition: transform var(--brw-dur-slow) var(--brw-ease-out);
   box-shadow: var(--brw-shadow-lg);
+  overflow: hidden;
 }
 .mobile-menu.is-open { transform: translateX(0); }
 
@@ -554,24 +554,45 @@ cite {
 }
 .mobile-overlay.is-open { opacity: 1; pointer-events: all; }
 
+.mobile-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--brw-border);
+}
+.mobile-menu-logo {
+  font-family: var(--brw-font-display);
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--brw-purple-800);
+}
+
 .mobile-close {
-  align-self: flex-end;
   background: none;
   border: none;
   cursor: pointer;
   padding: 8px;
   color: var(--brw-ink-muted);
   border-radius: var(--brw-radius-sm);
-  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: background var(--brw-dur-fast) var(--brw-ease);
 }
 .mobile-close:hover { background: var(--brw-surface-mute); color: var(--brw-ink); }
-.mobile-close svg { width: 24px; height: 24px; }
+.mobile-close svg { width: 20px; height: 20px; }
 
-.mobile-links { display: flex; flex-direction: column; gap: 4px; }
+.mobile-links {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 16px;
+  gap: 4px;
+  flex: 1;
+}
 .mobile-links a {
   font-family: var(--brw-font-display);
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--brw-ink);
   padding: 14px 16px;
@@ -580,11 +601,12 @@ cite {
               color var(--brw-dur-fast) var(--brw-ease);
 }
 .mobile-links a:last-child {
-  margin-top: 16px;
+  margin-top: auto;
   background: var(--brw-gradient);
   color: #fff;
   text-align: center;
   border-radius: var(--brw-radius-pill);
+  padding: 14px 24px;
 }
 .mobile-links a:not(:last-child):hover {
   background: var(--brw-surface-mute);
