@@ -198,6 +198,8 @@ ul { list-style: none; }
   margin-bottom: 36px;
   line-height: 1.75;
 }
+.btn-hero-mobile { display: none; }
+.btn-hero-desktop { display: inline-block; }
 .hero-image {
   flex: 0 0 380px;
   display: flex;
@@ -689,9 +691,11 @@ cite {
     padding: 60px 24px;
     min-height: auto;
   }
-  .hero-sub { margin: 0 auto 36px; }
+  .hero-sub { margin: 0 auto 24px; }
   .hero-image { flex: none; }
   .photo-frame { width: 200px; height: 200px; }
+  .btn-hero-desktop { display: none; }
+  .btn-hero-mobile { display: inline-block; margin-top: 24px; }
   .about-grid, .vm-grid, .contact-grid { grid-template-columns: 1fr; }
   .services-grid, .testimonials-grid { grid-template-columns: 1fr 1fr; }
   .nav-links { display: none; }
