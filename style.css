@@ -684,13 +684,14 @@ cite {
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
   .hero {
-    flex-direction: column-reverse;
+    flex-direction: column;
     text-align: center;
     padding: 60px 24px;
     min-height: auto;
   }
   .hero-sub { margin: 0 auto 36px; }
   .hero-image { flex: none; }
+  .photo-frame { width: 200px; height: 200px; }
   .about-grid, .vm-grid, .contact-grid { grid-template-columns: 1fr; }
   .services-grid, .testimonials-grid { grid-template-columns: 1fr 1fr; }
   .nav-links { display: none; }
