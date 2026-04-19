@@ -124,8 +124,6 @@ ul { list-style: none; }
   position: sticky;
   top: 0;
   z-index: 100;
-  /* needed so dropdown positions relative to navbar */
-  isolation: isolate;
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -504,39 +502,48 @@ cite {
 /* ===== HAMBURGER ===== */
 .hamburger {
   display: none;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 5px;
   width: 40px;
   height: 40px;
   background: none;
-  border: none;
+  border: 1.5px solid var(--brw-border);
   cursor: pointer;
   padding: 6px;
-  border-radius: var(--brw-radius-sm);
-  transition: background var(--brw-dur-fast) var(--brw-ease);
+  border-radius: var(--brw-radius-md);
+  transition: background var(--brw-dur-fast) var(--brw-ease),
+              border-color var(--brw-dur-fast) var(--brw-ease);
 }
-.hamburger:hover { background: var(--brw-surface-mute); }
-.hamburger span {
-  display: block;
-  height: 2px;
-  background: var(--brw-purple-700);
-  border-radius: 2px;
-  transition: transform var(--brw-dur-base) var(--brw-ease-out),
-              opacity var(--brw-dur-fast) var(--brw-ease);
+.hamburger:hover {
+  background: var(--brw-surface-mute);
+  border-color: var(--brw-border-strong);
 }
 
 /* ===== MOBILE MENU ===== */
+.nav-dropdown-wrapper {
+  position: relative;
+}
+
+.chevron-icon {
+  width: 22px;
+  height: 22px;
+  stroke: var(--brw-purple-700);
+  transition: transform var(--brw-dur-base) var(--brw-ease);
+}
+.hamburger[aria-expanded="true"] .chevron-icon {
+  transform: rotate(180deg);
+}
+
 .mobile-menu {
   position: absolute;
-  top: 100%;
-  left: 0;
+  top: calc(100% + 10px);
   right: 0;
+  min-width: 200px;
   background: var(--brw-surface);
   z-index: 200;
-  border-top: 1px solid var(--brw-border);
-  border-bottom: 1px solid var(--brw-border);
-  box-shadow: var(--brw-shadow-md);
+  border: 1px solid var(--brw-border);
+  border-radius: var(--brw-radius-lg);
+  box-shadow: var(--brw-shadow-lg);
   opacity: 0;
   pointer-events: none;
   transform: translateY(-8px);
@@ -687,7 +694,7 @@ cite {
   .about-grid, .vm-grid, .contact-grid { grid-template-columns: 1fr; }
   .services-grid, .testimonials-grid { grid-template-columns: 1fr 1fr; }
   .nav-links { display: none; }
-  .hamburger { display: flex; }
+  .hamburger { display: flex; align-items: center; justify-content: center; }
   .photo-strip-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px; }
   .photo-slot:last-child { grid-column: span 2; }
 }
