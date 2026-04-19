@@ -30,23 +30,16 @@
     </div>
   </nav>
 
-  <!-- MOBILE MENU -->
+  <!-- MOBILE DROPDOWN -->
   <div class="mobile-menu" aria-hidden="true">
-    <div class="mobile-menu-header">
-      <span class="mobile-menu-logo">Bold Risk <span class="amp">&</span> Wellness</span>
-      <button class="mobile-close" aria-label="Close menu">
-        <i data-lucide="x"></i>
-      </button>
-    </div>
     <ul class="mobile-links">
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#values">Values</a></li>
       <li><a href="#testimonials">Testimonials</a></li>
-      <li><a href="#contact">Get in Touch</a></li>
+      <li><a href="#contact" class="mobile-cta">Get in Touch</a></li>
     </ul>
   </div>
-  <div class="mobile-overlay"></div>
 
   <!-- HERO -->
   <section class="hero">
@@ -304,29 +297,22 @@
 
     const hamburger = document.querySelector('.hamburger');
     const mobileMenu = document.querySelector('.mobile-menu');
-    const mobileOverlay = document.querySelector('.mobile-overlay');
-    const mobileClose = document.querySelector('.mobile-close');
     const mobileLinks = document.querySelectorAll('.mobile-links a');
 
-    function openMenu() {
-      mobileMenu.classList.add('is-open');
-      mobileOverlay.classList.add('is-open');
-      hamburger.setAttribute('aria-expanded', 'true');
-      mobileMenu.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
+    function toggleMenu() {
+      const isOpen = mobileMenu.classList.toggle('is-open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+      mobileMenu.setAttribute('aria-hidden', !isOpen);
     }
 
     function closeMenu() {
       mobileMenu.classList.remove('is-open');
-      mobileOverlay.classList.remove('is-open');
       hamburger.setAttribute('aria-expanded', 'false');
       mobileMenu.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
     }
 
-    hamburger.addEventListener('click', openMenu);
-    mobileClose.addEventListener('click', closeMenu);
-    mobileOverlay.addEventListener('click', closeMenu);
+    hamburger.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(); });
+    document.addEventListener('click', (e) => { if (!mobileMenu.contains(e.target)) closeMenu(); });
     mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
   </script>
 
